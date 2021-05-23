@@ -16,7 +16,14 @@ const getGenreById = async (request, response) => {
 
     const genre = await models.Genres.findOne({
       where: { id },
-      include: [{ model: models.Novels } && { model: models.Authors }]
+      include: [{
+        model: models.Novels,
+        as: 'Novels',
+        include: [{
+          model: models.Authors,
+          as: 'Author',
+        }]
+      }]
     })
 
     return genre ? response.send(genre) : response.sendStatus(404)
