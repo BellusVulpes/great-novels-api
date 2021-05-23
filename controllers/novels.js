@@ -3,7 +3,14 @@ const models = require('../models')
 const getAllNovels = async (request, response) => {
   try {
     const novels = await models.Novels.findAll({
-      include: [{ model: models.Authors } && { meodel: models.Genres }]
+      include: [{
+        model: models.Authors,
+        as: 'Author',
+        include: [{
+          model: models.Genres,
+          as: 'Genre',
+        }]
+      }]
     })
 
     return response.send(novels)
@@ -18,7 +25,14 @@ const getNovelById = async (request, response) => {
 
     const novel = await models.Novels.findOne({
       where: { id },
-      include: [{ model: models.Authors } && { model: models.Genres }]
+      include: [{
+        model: models.Authors,
+        as: 'Author',
+        include: [{
+          model: models.Genres,
+          as: 'Genre',
+        }]
+      }]
     })
 
     return novel ? response.send(novel) : response.sendStatus(404)
