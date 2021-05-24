@@ -13,7 +13,7 @@ app.get('/genres', getAllGenres)
 
 app.get('/genres/:id', getGenreById)
 
-app.get('/authors', getAllNovels)
+app.get('/novels', getAllNovels)
 
 app.get('/novels/:id', getNovelById)
 

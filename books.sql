@@ -2,7 +2,7 @@ CREATE DATABASE books;
 
 CREATE USER 'authors'@'localhost' IDENTIFIED BY 'Auth0r$!';
 
-GRANT ALL ON authors.* TO 'authors'@'localhost';
+GRANT ALL ON authors.* TO 'books'@'localhost';
 
 USE books;
 
@@ -36,9 +36,8 @@ CREATE TABLE novels (
   FOREIGN KEY (authorId) REFERENCES authors(id)
 );
     
-CREATE TABLE authorNovels (
+CREATE TABLE genreNovels (
 	id INT auto_increment,
-  authorId INT,
   genreId INT,
   novelId INT,
 	createdAt DATETIME DEFAULT NOW(),
@@ -66,19 +65,25 @@ INSERT INTO authors (nameFirst, nameLast) VALUES ("George", "Orwell");
 INSERT INTO authors (nameFirst, nameLast) VALUES ("H.G.", "Wells");
 INSERT INTO authors (nameFirst, nameLast) VALUES ("Ray", "Bradbury");
 
-INSERT INTO genres (name) VALUES ("Fiction, Historical Fiction");
-INSERT INTO genres (name) VALUES ("Fiction, Historical Fiction, Adventure, French Literature");
-INSERT INTO genres (name) VALUES ("Fiction, Historical Fiction, African Literature");
-INSERT INTO genres (name) VALUES ("Fiction, Historical Fiction, Drama, Plays");
-INSERT INTO genres (name) VALUES ("Fiction, Historical Fiction, War, Russian Literature");
-INSERT INTO genres (name) VALUES ("Fiction, Horror, Fantasy");
-INSERT INTO genres (name) VALUES ("Fiction, Horror, Gothic, Fantasy");
-INSERT INTO genres (name) VALUES ("Fiction, Mystery");
-INSERT INTO genres (name) VALUES ("Fiction, Mystery, Crime, Thriller");
-INSERT INTO genres (name) VALUES ("Fiction, Mystery, Science Fiction, Horror");
-INSERT INTO genres (name) VALUES ("Fiction, Russian Literature, Mystery");
-INSERT INTO genres (name) VALUES ("Fiction, Science Fiction, Dystopia");
-INSERT INTO genres (name) VALUES ("Fiction, Science Fiction, Time Travel");
+INSERT INTO genres (name) VALUES ("Fiction");
+INSERT INTO genres (name) VALUES ("Historical Fiction");
+INSERT INTO genres (name) VALUES ("French Literature");
+INSERT INTO genres (name) VALUES ("Adventure");
+INSERT INTO genres (name) VALUES ("African Literature");
+INSERT INTO genres (name) VALUES ("Drama");
+INSERT INTO genres (name) VALUES ("Plays");
+INSERT INTO genres (name) VALUES ("War");
+INSERT INTO genres (name) VALUES ("Russian Literature");
+INSERT INTO genres (name) VALUES ("Horror");
+INSERT INTO genres (name) VALUES ("Fantasy");
+INSERT INTO genres (name) VALUES ("Gothic");
+INSERT INTO genres (name) VALUES ("Mystery");
+INSERT INTO genres (name) VALUES ("Crime");
+INSERT INTO genres (name) VALUES ("Thriller");
+INSERT INTO genres (name) VALUES ("Science Fiction");
+INSERT INTO genres (name) VALUES ("Dystopia");
+INSERT INTO genres (name) VALUES ("Time Travel");
+
 
 INSERT INTO novels (title) VALUES ("A Tale of Two Cities");
 INSERT INTO novels (title) VALUES ("Animal Farm");
@@ -95,3 +100,52 @@ INSERT INTO novels (title) VALUES ("The Three Musketeers");
 INSERT INTO novels (title) VALUES ("The Time Machine");
 INSERT INTO novels (title) VALUES ("Things Fall Apart");
 INSERT INTO novels (title) VALUES ("War and Peace");
+
+INSERT INTO genreNovels (genreId, NovelId) VALUES ("6", "1");
+INSERT INTO genreNovels (genreId, NovelId) VALUES ("6", "13");
+INSERT INTO genreNovels (genreId, NovelId) VALUES ("12", "1");
+INSERT INTO genreNovels (genreId, NovelId) VALUES ("12", "2");
+INSERT INTO genreNovels (genreId, NovelId) VALUES ("12", "4");
+INSERT INTO genreNovels (genreId, NovelId) VALUES ("12", "3");
+INSERT INTO genreNovels (genreId, NovelId) VALUES ("4", "1");
+INSERT INTO genreNovels (genreId, NovelId) VALUES ("4", "10");
+INSERT INTO genreNovels (genreId, NovelId) VALUES ("4", "11");
+INSERT INTO genreNovels (genreId, NovelId) VALUES ("10", "1");
+INSERT INTO genreNovels (genreId, NovelId) VALUES ("10", "10");
+INSERT INTO genreNovels (genreId, NovelId) VALUES ("10", "11");
+INSERT INTO genreNovels (genreId, NovelId) VALUES ("10", "12");
+INSERT INTO genreNovels (genreId, NovelId) VALUES ("7", "1");
+INSERT INTO genreNovels (genreId, NovelId) VALUES ("7", "2");
+INSERT INTO genreNovels (genreId, NovelId) VALUES ("15", "1");
+INSERT INTO genreNovels (genreId, NovelId) VALUES ("15", "2");
+INSERT INTO genreNovels (genreId, NovelId) VALUES ("15", "8");
+INSERT INTO genreNovels (genreId, NovelId) VALUES ("15", "9");
+INSERT INTO genreNovels (genreId, NovelId) VALUES ("1", "1");
+INSERT INTO genreNovels (genreId, NovelId) VALUES ("1", "2");
+INSERT INTO genreNovels (genreId, NovelId) VALUES ("8", "1");
+INSERT INTO genreNovels (genreId, NovelId) VALUES ("8", "2");
+INSERT INTO genreNovels (genreId, NovelId) VALUES ("8", "6");
+INSERT INTO genreNovels (genreId, NovelId) VALUES ("8", "7");
+INSERT INTO genreNovels (genreId, NovelId) VALUES ("9", "1");
+INSERT INTO genreNovels (genreId, NovelId) VALUES ("9", "13");
+INSERT INTO genreNovels (genreId, NovelId) VALUES ("9", "14");
+INSERT INTO genreNovels (genreId, NovelId) VALUES ("9", "15");
+INSERT INTO genreNovels (genreId, NovelId) VALUES ("11", "1");
+INSERT INTO genreNovels (genreId, NovelId) VALUES ("11", "13");
+INSERT INTO genreNovels (genreId, NovelId) VALUES ("11", "16");
+INSERT INTO genreNovels (genreId, NovelId) VALUES ("11", "10");
+INSERT INTO genreNovels (genreId, NovelId) VALUES ("3", "1");
+INSERT INTO genreNovels (genreId, NovelId) VALUES ("3", "9");
+INSERT INTO genreNovels (genreId, NovelId) VALUES ("3", "13");
+INSERT INTO genreNovels (genreId, NovelId) VALUES ("5", "1");
+INSERT INTO genreNovels (genreId, NovelId) VALUES ("5", "16");
+INSERT INTO genreNovels (genreId, NovelId) VALUES ("5", "17");
+INSERT INTO genreNovels (genreId, NovelId) VALUES ("2", "1");
+INSERT INTO genreNovels (genreId, NovelId) VALUES ("2", "16");
+INSERT INTO genreNovels (genreId, NovelId) VALUES ("2", "17");
+INSERT INTO genreNovels (genreId, NovelId) VALUES ("13", "1");
+INSERT INTO genreNovels (genreId, NovelId) VALUES ("13", "16");
+INSERT INTO genreNovels (genreId, NovelId) VALUES ("13", "18");
+INSERT INTO genreNovels (genreId, NovelId) VALUES ("14", "1");
+INSERT INTO genreNovels (genreId, NovelId) VALUES ("14", "2");
+INSERT INTO genreNovels (genreId, NovelId) VALUES ("14", "5");
