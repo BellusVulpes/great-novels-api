@@ -8,8 +8,8 @@ USE books;
 
 CREATE TABLE authors (
 	id INT auto_increment,
-    nameFirst VARCHAR(255) NOT NULL,
-    nameLast VARCHAR(255) NOT NULL,
+  nameFirst VARCHAR(255) NOT NULL,
+  nameLast VARCHAR(255) NOT NULL,
 	createdAt DATETIME DEFAULT NOW(),
 	updatedAt DATETIME DEFAULT NOW() ON UPDATE NOW(),
 	deletedAt DATETIME,
@@ -18,7 +18,7 @@ CREATE TABLE authors (
     
 CREATE TABLE genres (
 	id INT auto_increment,
-    name VARCHAR(255) NOT NULL,
+  name VARCHAR(255) NOT NULL,
 	createdAt DATETIME DEFAULT NOW(),
 	updatedAt DATETIME DEFAULT NOW() ON UPDATE NOW(),
 	deletedAt DATETIME,
@@ -27,27 +27,27 @@ CREATE TABLE genres (
     
 CREATE TABLE novels (
 	id INT auto_increment,
-    title VARCHAR(255) NOT NULL,
-    authorId INT,
+  title VARCHAR(255) NOT NULL,
+  authorId INT,
 	createdAt DATETIME DEFAULT NOW(),
 	updatedAt DATETIME DEFAULT NOW() ON UPDATE NOW(),
 	deletedAt DATETIME,
 	PRIMARY KEY(id),
-    FOREIGN KEY (authorId) REFERENCES authors(id)
+  FOREIGN KEY (authorId) REFERENCES authors(id)
 );
     
 CREATE TABLE authorNovels (
 	id INT auto_increment,
-    authorId INT,
-    genreId INT,
-    novelId INT,
+  authorId INT,
+  genreId INT,
+  novelId INT,
 	createdAt DATETIME DEFAULT NOW(),
 	updatedAt DATETIME DEFAULT NOW() ON UPDATE NOW(),
 	deletedAt DATETIME,
 	PRIMARY KEY(id),
-    FOREIGN KEY (authorId) REFERENCES authors(id),
-    FOREIGN KEY (genreId) REFERENCES genres(id),
-    FOREIGN KEY (novelId) REFERENCES novels(id)
+  FOREIGN KEY (authorId) REFERENCES authors(id),
+  FOREIGN KEY (genreId) REFERENCES genres(id),
+  FOREIGN KEY (novelId) REFERENCES novels(id)
 );
     
 INSERT INTO authors (nameFirst, nameLast) VALUES ("Bram", "Stoker");
