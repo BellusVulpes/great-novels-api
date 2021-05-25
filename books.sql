@@ -83,22 +83,21 @@ INSERT INTO genres (name) VALUES ("Science Fiction");
 INSERT INTO genres (name) VALUES ("Dystopia");
 INSERT INTO genres (name) VALUES ("Time Travel");
 
-
-INSERT INTO novels (title) VALUES ("A Tale of Two Cities");
-INSERT INTO novels (title) VALUES ("Animal Farm");
-INSERT INTO novels (title) VALUES ("Crime and Punishment");
-INSERT INTO novels (title) VALUES ("Dracula");
-INSERT INTO novels (title) VALUES ("Fahrenheit 451");
-INSERT INTO novels (title) VALUES ("Murder on the Orient Express");
-INSERT INTO novels (title) VALUES ("The Color Purple");
-INSERT INTO novels (title) VALUES ("The Crucible");
-INSERT INTO novels (title) VALUES ("The Hound of Baskervilles");
-INSERT INTO novels (title) VALUES ("The Picture of Dorian Gray");
-INSERT INTO novels (title) VALUES ("The Strange Case of Dr. Jekyll and Mr. Hyde");
-INSERT INTO novels (title) VALUES ("The Three Musketeers");
-INSERT INTO novels (title) VALUES ("The Time Machine");
-INSERT INTO novels (title) VALUES ("Things Fall Apart");
-INSERT INTO novels (title) VALUES ("War and Peace");
+INSERT INTO novels (title, authorId) VALUES ("A Tale of Two Cities", "5");
+INSERT INTO novels (title, authorId) VALUES ("Animal Farm", "13");
+INSERT INTO novels (title, authorId) VALUES ("Crime and Punishment", "12");
+INSERT INTO novels (title, authorId) VALUES ("Dracula", "1");
+INSERT INTO novels (title, authorId) VALUES ("Fahrenheit 451", "15");
+INSERT INTO novels (title, authorId) VALUES ("Murder on the Orient Express", "10");
+INSERT INTO novels (title, authorId) VALUES ("The Color Purple", "3");
+INSERT INTO novels (title, authorId) VALUES ("The Crucible", "6");
+INSERT INTO novels (title, authorId) VALUES ("The Hound of Baskervilles", "8");
+INSERT INTO novels (title, authorId) VALUES ("The Picture of Dorian Gray", "2");
+INSERT INTO novels (title, authorId) VALUES ("The Strange Case of Dr. Jekyll and Mr. Hyde", "9");
+INSERT INTO novels (title, authorId) VALUES ("The Three Musketeers", "7");
+INSERT INTO novels (title, authorId) VALUES ("The Time Machine", "14");
+INSERT INTO novels (title, authorId) VALUES ("Things Fall Apart", "11");
+INSERT INTO novels (title, authorId) VALUES ("War and Peace", "4");
 
 INSERT INTO genreNovels (NovelId, genreId) VALUES ("6", "1");
 INSERT INTO genreNovels (NovelId, genreId) VALUES ("6", "13");
