@@ -1,47 +1,38 @@
 const models = require('../models')
 
 const getAllNovels = async (request, response) => {
-  try {
-    const novels = await models.Novels.findAll({
-      include: [{
-        model: models.Authors,
-        as: 'Author',
-        include: [{
-          model: models.Genres,
-          as: 'Genre',
-        }]
-      }]
-    })
+  const novels = await models.Novels.findAll({
+    include: [
+      { model: models.Authors },
+      { model: models.Genres },
+    ]
+  })
 
-    return response.send(novels)
-  } catch (error) {
-    return response.status(500).send('Unable to retrieve novels list')
-  }
+  return response.send(novels)
 }
 
-const getNovelById = async (request, response) => {
-  try {
-    const { id } = request.params
+const getNovelByIdOrName = async (request, response) => {
+  const { identifier } = request.params
 
-    const novel = await models.Novels.findOne({
-      where: { id },
-      include: [{
-        model: models.Authors,
-        as: 'Author',
-        include: [{
-          model: models.Genres,
-          as: 'Genre',
-        }]
-      }]
-    })
+  const novel = await models.Novels.findOne({
+    where: {
+      [models.Sequelize.Op.or]: [
+        { id: identifier },
+        { title: { [models.Sequelize.Op.like]: `%${identifier}%` } },
+      ]
+    },
+    include: [
+      { model: models.Authors },
+      { model: models.Genres },
+    ]
+  })
 
-    return novel ? response.send(novel) : response.sendStatus(404)
-  } catch (error) {
-    return response.status(500).send('Unable to retrieve novel')
-  }
+  return novel
+    ? response.send(novel)
+    : response.sendStatus(404)
 }
 
 module.exports = {
   getAllNovels,
-  getNovelById,
+  getNovelByIdOrName,
 }

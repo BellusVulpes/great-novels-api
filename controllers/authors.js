@@ -1,38 +1,33 @@
 const models = require('../models')
 
 const getAllAuthors = async (request, response) => {
-  try {
-    const authors = await models.Authors.findAll()
+  const authors = await models.Authors.findAll()
 
-    return response.send(authors)
-  } catch (error) {
-    return response.status(500).send('Unable to retrieve author list')
-  }
+  return response.send(authors)
 }
 
-const getAuthorById = async (request, response) => {
-  try {
-    const { id } = request.params
+const getAuthorByIdOrName = async (request, response) => {
+  const { identifier } = request.params
 
-    const author = await models.Authors.findOne({
-      where: { id },
-      include: [{
-        model: models.Novels,
-        as: 'Novels',
-        include: [{
-          model: models.Genres,
-          as: 'Genre',
-        }]
-      }]
-    })
+  const author = await models.Authors.findOne({
+    where: {
+      [models.Sequelize.Op.or]: [
+        { id: identifier },
+        { nameLast: { [models.Sequelize.Op.like]: `%${identifier}%` } },
+      ]
+    },
+    include: [{
+      model: models.Novels,
+      include: [{ model: models.Genres }]
+    }]
+  })
 
-    return author ? response.send(author) : response.sendStatus(404)
-  } catch (error) {
-    return response.status(500).send('Unable to retrieve author')
-  }
+  return author
+    ? response.send(author)
+    : response.sendStatus(404)
 }
 
 module.exports = {
   getAllAuthors,
-  getAuthorById,
+  getAuthorByIdOrName,
 }

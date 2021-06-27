@@ -13,7 +13,7 @@ Your API should support the routes listed below, pulling the data from the datab
 
 ### Get All Authors
 
-**GET** http://localhost:1337/authors
+**GET** http://localhost:1346/authors
 
 **Response**
 ```JSON
@@ -38,7 +38,7 @@ Your API should support the routes listed below, pulling the data from the datab
 
 ### Get an Author with their novels and those novels genres by the author's Id
 
-**GET** http://localhost:1337/authors/2
+**GET** http://localhost:1346/authors/2
 
 **Response**
 ```JSON
@@ -78,7 +78,7 @@ Your API should support the routes listed below, pulling the data from the datab
 
 ### Get All Genres
 
-**GET** http://localhost:1337/genres
+**GET** http://localhost:1346/genres
 
 **Response**
 ```JSON
@@ -101,7 +101,7 @@ Your API should support the routes listed below, pulling the data from the datab
 
 ### Get a Genre with all novels in that genres and those novels author by the genre's Id
 
-**GET** http://localhost:1337/genres/2
+**GET** http://localhost:1346/genres/2
 
 **Response**
 ```JSON
@@ -137,7 +137,7 @@ Your API should support the routes listed below, pulling the data from the datab
 
 ### Get All Novels with their authors and genres
 
-**GET** http://localhost:1337/novels
+**GET** http://localhost:1346/novels
 
 **Response**
 ```JSON
@@ -177,7 +177,7 @@ Your API should support the routes listed below, pulling the data from the datab
 
 ### Get a Novel with its author and genres the novel's Id
 
-**GET** http://localhost:1337/novels/4
+**GET** http://localhost:1346/novels/4
 
 **Response**
 ```JSON
@@ -224,7 +224,7 @@ In a branch called `part-two-answer`, continuing from your previous work, your t
 
 ### Get Author by Last Name (partial match)
 
-**GET** http://localhost:1337/authors/wild
+**GET** http://localhost:1346/authors/wild
 
 **Response**
 ```JSON
@@ -263,7 +263,7 @@ In a branch called `part-two-answer`, continuing from your previous work, your t
 ```
 
 ### Get Novel by Title (partial match)
-**GET** http://localhost:1337/novels/peace
+**GET** http://localhost:1346/novels/peace
 
 **Response**
 ```JSON
